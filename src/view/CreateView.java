@@ -1,8 +1,5 @@
 package view;
 
-import javax.security.sasl.Sasl;
-
-import com.mysql.cj.jdbc.result.ResultSetFactory;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -14,7 +14,7 @@ public class koneksi {
     public static Connection koneksiDB() throws SQLException {
         if (connect == null) {
             try {
-                String url = "jdbc:sqlite:D:/NetbinProject/StokObatApotek2/src/db/apotek.db";
+                String url = "jdbc:sqlite:D:/NetbinProject/StokObatApotek/src/db/apotek.db";
                 connect = DriverManager.getConnection(url);
                 System.out.println("Koneksi sukses");
             } catch (SQLException e) {
