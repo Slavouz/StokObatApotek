@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 //import javafx.geometry.Insets;
 //import javafx.geometry.Pos;
 //import javafx.scene.control.Label;
@@ -36,10 +37,10 @@ public class model_tabel implements controller_tabel {
         private final SimpleStringProperty harga2;
         private final SimpleStringProperty diskon;
 
-        public StokObat(String id, String nama_barang, int no_batch, String pbf, String jenis, int satuan, int stok, String tgl_msk, String tgl_klr, String exp, int harga1, int harga2, int diskon) {
+        public StokObat(String id, String nama_barang, String no_batch, String pbf, String jenis, int satuan, int stok, String tgl_msk, String tgl_klr, String exp, int harga1, int harga2, int diskon) {
             this.id = new SimpleStringProperty(id);
             this.nama_barang = new SimpleStringProperty(nama_barang);
-            this.no_batch = new SimpleStringProperty(String.valueOf(no_batch));
+            this.no_batch = new SimpleStringProperty(no_batch);
             this.pbf = new SimpleStringProperty(pbf);
             this.jenis = new SimpleStringProperty(jenis);
             this.satuan = new SimpleStringProperty(String.valueOf(satuan));
@@ -159,12 +160,21 @@ public class model_tabel implements controller_tabel {
 
     @Override
     public void tambah(tabel tb) {
-        create ct = new create();        
+        create ct = new create();
+        ct.createForm();
     }
 
     @Override
     public void ubah(tabel tb) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (tb.table.getSelectionModel().isEmpty()) {
+            Alert em = new Alert(AlertType.INFORMATION);
+            em.setTitle("Informasi");
+            em.setHeaderText("Mohon untuk memilih item yang ingin di ubah");
+            em.show();
+        } else {            
+            update up = new update();
+            up.createForm();            
+        }
     }
 
     @Override
@@ -214,7 +224,7 @@ public class model_tabel implements controller_tabel {
         while (rs.next()) {
             int id = rs.getInt("no");
             String namaBarang = rs.getString("nama_barang");
-            int noBatch = rs.getInt("no_batch");
+            String noBatch = rs.getString("no_batch");
             String pbf = rs.getString("PBF");
             String jenis = rs.getString("jenis");
             int satuan = rs.getInt("satuan");
