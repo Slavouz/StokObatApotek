@@ -119,17 +119,17 @@ public class tabel extends Application {
 
         idC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("id")
         );
-        namaBarangC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("namaBarang")
+        namaBarangC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("nama")
         );
         noBatchC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("noBatch")
         );
-        pbfC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("PBF")
+        pbfC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("Pbf")
         );
         jenisC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("jenis")
         );
         satuanC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("satuan")
         );
-        stokC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("jumlah_stok")
+        stokC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("Stok")
         );
         tglMskC.setCellValueFactory(new PropertyValueFactory<StokObat, String>("tglMsk")
         );
@@ -148,6 +148,14 @@ public class tabel extends Application {
         refBtn.setOnAction((ActionEvent e) -> {
             try {
                 mt.refTb(this);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        });
+        
+        hapusBtn.setOnAction((ActionEvent e) -> {
+            try {
+                mt.hapus(this);
             } catch (SQLException ex) {
                 System.out.println(ex);
             }

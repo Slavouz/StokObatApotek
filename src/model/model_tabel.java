@@ -8,15 +8,18 @@ import controller.controller_tabel;
 import java.sql.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 //import javafx.geometry.Insets;
 //import javafx.geometry.Pos;
 //import javafx.scene.control.Label;
 //import javafx.scene.layout.GridPane;
 //import javafx.stage.Stage;
-import view.tabel;
+import view.*;
 
-public class model_tabel implements controller_tabel {    
-    
+public class model_tabel implements controller_tabel {
+
     public static class StokObat {
 
         private final SimpleStringProperty id;
@@ -73,7 +76,7 @@ public class model_tabel implements controller_tabel {
             no_batch.set(String.valueOf(no_batch));
         }
 
-        public String getPbg() {
+        public String getPbf() {
             return pbf.get();
         }
 
@@ -156,7 +159,7 @@ public class model_tabel implements controller_tabel {
 
     @Override
     public void tambah(tabel tb) {
-        
+        create ct = new create();        
     }
 
     @Override
@@ -166,7 +169,38 @@ public class model_tabel implements controller_tabel {
 
     @Override
     public void hapus(tabel tb) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (tb.table.getSelectionModel().isEmpty()) {
+            Alert em = new Alert(Alert.AlertType.INFORMATION);
+            em.setTitle("Informasi");
+            em.setHeaderText("Mohon untuk memilih item yang ingin di hapus");
+            em.show();
+        } else {
+            StokObat so = (StokObat) tb.table.getSelectionModel().getSelectedItem();
+            String index = so.getId();
+            Alert konfirm = new Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.CANCEL);
+            konfirm.setTitle("Konfirmasi");
+            konfirm.setHeaderText("Anda yakin ingin menghapus data no. " + index + " ?");
+            konfirm.showAndWait();
+            if (konfirm.getResult() == ButtonType.YES) {
+                try {
+                    String sql = "DELETE FROM stok_obat WHERE no = '" + index + "'";
+                    Connection conn = koneksi.koneksi.koneksiDB();
+                    PreparedStatement pst = conn.prepareStatement(sql);
+                    pst.execute();
+                    Alert info = new Alert(AlertType.INFORMATION);
+                    info.setTitle("Informasi");
+                    info.setHeaderText("Data berhasil dihapus");
+                    info.show();
+                    refTb(tb);
+                } catch (SQLException e) {
+                    System.out.println(e);
+                    Alert s = new Alert(AlertType.ERROR);
+                    s.setTitle("ERROR");
+                    s.setHeaderText("Error: " + e);
+                    s.show();
+                }
+            }
+        }
     }
 
     @Override
@@ -176,23 +210,25 @@ public class model_tabel implements controller_tabel {
         Connection conn = koneksi.koneksi.koneksiDB();
         PreparedStatement pst = conn.prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
+        tb.table.getItems().clear();
         while (rs.next()) {
             int id = rs.getInt("no");
-                String namaBarang = rs.getString("nama_barang");
-                int noBatch = rs.getInt("no_batch");
-                String pbf = rs.getString("PBF");
-                String jenis = rs.getString("jenis");
-                int satuan = rs.getInt("satuan");
-                int stok = rs.getInt("jumlah_stok");
-                String tglMsk = rs.getString("tgl_msk");
-                String tglKlr = rs.getString("tgl_klr");
-                String exp = rs.getString("exp");
-                int harga1 = rs.getInt("harga1");
-                int harga2 = rs.getInt("harga2");
-                int diskon = rs.getInt("diskon");
-                
-                StokObat so = new StokObat(String.valueOf(id), namaBarang, noBatch, pbf, jenis, satuan, stok, tglMsk, tglKlr, exp, harga1, harga2, diskon);
-                data.add(so);
+            String namaBarang = rs.getString("nama_barang");
+            int noBatch = rs.getInt("no_batch");
+            String pbf = rs.getString("PBF");
+            String jenis = rs.getString("jenis");
+            int satuan = rs.getInt("satuan");
+            int stok = rs.getInt("jumlah_stok");
+            String tglMsk = rs.getString("tgl_msk");
+            String tglKlr = rs.getString("tgl_klr");
+            String exp = rs.getString("exp");
+            int harga1 = rs.getInt("harga1");
+            int harga2 = rs.getInt("harga2");
+            int diskon = rs.getInt("diskon");
+
+            StokObat so = new StokObat(String.valueOf(id), namaBarang, noBatch, pbf, jenis, satuan, stok, tglMsk, tglKlr, exp, harga1, harga2, diskon);
+            data.add(so);
         }
+        tb.table.setItems(data);
     }
 }
