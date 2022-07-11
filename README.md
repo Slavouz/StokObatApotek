@@ -8,6 +8,3 @@ Depression ```major depressive disorder``` is a common and serious medical illne
 
 ## Why are we Depressed
 Because we get a scientific writing course whose lecturers are fussy and difficult to get access from, we don't know how to write it properly. as well as the title we have to design an application that is not necessarily completed in one week.
-
-## How's the project owner?
-He has no college circle and it makes him depressed even more. Either introvert or social distrust. When he had a chance, he flees into container cafe (...or should I say, He's doing Avoidant Coping), cowering in shame, to be a weenie, to cry in a silent. He just doesn't want to be everyone's enemy.
