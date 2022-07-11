@@ -13,8 +13,6 @@ import view.tabel;
 import java.sql.SQLException;
 
 public interface controller_tabel {
-    public void tambah (tabel tb);
-    public void ubah (tabel tb);
     public void hapus (tabel tb) throws SQLException;
     public void refTb (tabel tb) throws SQLException;
 }

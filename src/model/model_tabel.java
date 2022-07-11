@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Stage;
 //import javafx.geometry.Insets;
 //import javafx.geometry.Pos;
 //import javafx.scene.control.Label;
@@ -155,25 +154,6 @@ public class model_tabel implements controller_tabel {
 
         public void setDiskon(String fDiskon) {
             harga2.set(fDiskon);
-        }
-    }
-
-    @Override
-    public void tambah(tabel tb) {
-        create ct = new create();
-        ct.createForm();
-    }
-
-    @Override
-    public void ubah(tabel tb) {
-        if (tb.table.getSelectionModel().isEmpty()) {
-            Alert em = new Alert(AlertType.INFORMATION);
-            em.setTitle("Informasi");
-            em.setHeaderText("Mohon untuk memilih item yang ingin di ubah");
-            em.show();
-        } else {            
-            update up = new update();
-            up.createForm();            
         }
     }
 
