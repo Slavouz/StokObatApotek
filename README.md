@@ -1,10 +1,26 @@
-# StokObatApotek2 #
-Project PI
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-![depressed_shinji](https://imgs.search.brave.com/V-DSyf7j2qwOI41NufWvI1Bb0DsG1jxOxFpBbzfl2J4/rs:fit:719:593:1/g:ce/aHR0cHM6Ly9leHRl/cm5hbC1wcmV2aWV3/LnJlZGQuaXQvU1Zm/a0hXVmlvNkhCeGhr/dkRKNEJsdEhYXzFL/bFR1SzZIbkdMQUpt/MUlQay5qcGc_YXV0/bz13ZWJwJnM9MDZl/YTE2Y2IyODhlYjcw/MDZhZWZmYmJkYzQ2/YWVkMjNhYTgzZWE4/YQ)
+# StokObatApotek
 
-## What Is Depression
-Depression ```major depressive disorder``` is a common and serious medical illness that negatively affects how you feel, the way you think and how you act. Fortunately, it is also treatable. Depression causes feelings of sadness and/or a loss of interest in activities you once enjoyed. It can lead to a variety of emotional and physical problems and can decrease your ability to function at work and at home.
+## Deskripsi
+Stok Obat Apotek adalah aplikasi yang dapat mengelola data stok obat apotek sehingga para apoteker dapat dengan mudah mengelola stok obat yang tersedia. Aplikasi ini dirancang menggunakan JavaFX. Tersedia dalam 2 versi: **XAMPP** dan **SQLite (Serverless)**
 
-## Why are we Depressed
-Because we get a scientific writing course whose lecturers are fussy and difficult to get access from, we don't know how to write it properly. as well as the title we have to design an application that is not necessarily completed in one week.
+## Fitur
+- Buat / Tambah Data Stok Obat
+- Edit Data
+- Hapus Data
+- *Lightweight* (Ramah Performa dan Tempat Penyimpanan)
+
+## Cara Instalasi
+### 1. XAMPP
+1. Siapkan aplikasi VSCode dan XAMPP
+2. Jalankan aplikasi XAMPP dan Jalankan Apache dan MySQL
+3. Install plugin Java dan JavaFX pada VSCode
+4. Jalankan *file* app.java
+
+### 2. SQLite
+1. Siapkan aplikasi *Netbeans*
+2. Edit *file* koneksi.java 
+3. Arahkan koneksi ke direktori *database*
+4. Jalankan *file* tabel.java pada direktori view
+
+## Tentang Proyek Ini
+Aplikasi ini dibuat untuk memenuhi tugas Penulisan Ilmiah yang berjudul Perancangan Aplikasi Stok Obat Apotek. Proyek ini akan tidak di *maintenance* lagi sehingga tidak akan ada *bug fix* dan *update* karena alasan tertentu
